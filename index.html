@@ -1,0 +1,58 @@
+﻿<!DOCTYPE html>
+<html>
+    <head>
+        <title>TD6</title>
+        <meta charset="utf-8">
+    </head>
+    <body>
+        <h1>Horloge digitale</h1>
+        <script>
+            //On crée un objet de type date stockant la date actuelle
+            var d = new Date();
+            
+            //On récupère les informatoins relatives à notre date
+            var dy = d.getFullYear();
+            var dmo = d.getMonth();
+            var dday = d.getDay();
+            var ddate = d.getDate();
+            var dh = d.getHours();
+            var dmi = d.getMinutes();
+            var ds = d.getSeconds();
+            
+            /*On se rappelle que le premier élément d'un tableau
+             *possède l'indice 0*/
+            var mois = ['janvier', 'février', 'mars', 'avril', 'mai',
+                        'juin', 'juillet', 'août', 'septembre',
+                        'octobre', 'novembre', 'décembre'];
+            
+            var jour = ['dimanche', 'lundi', 'mardi', 'mercredi',
+                        'jeudi', 'vendredi', 'samedi'];
+            
+            /*On utilise les informations récupérées comme indices pour
+             *nos tableaux pour récupérer les valeurs en français*/
+            //document.write(dy+' '+dmo+' '+dday+' '+ddate+' '+dh+' '+dmi+' '+ds);
+            //document.write(ddate+' '+dday);
+            //alert(ddate);
+            document.write('Nous somme le ' +jour[dday]+' '+ddate+' '+mois[dmo]+' '+dy+'.');
+        </script>
+		
+		<p>Il est actuelement : <span id='t'></span></p>
+        <button id='stop' onclick='arret()'>Stop temps !</button>
+        
+        <script>
+            var heure = document.getElementById('t');
+            //var stop = document.getElementById('stop');
+            var tempsReel = setInterval(horloge, 1000);
+            
+            function horloge(){
+                var d = new Date();
+                heure.innerHTML = d.toLocaleTimeString();
+            }
+            
+            //stop.addEventListener('click', arret);
+            function arret(){
+                clearInterval(tempsReel);
+            }
+        </script>
+    </body>
+</html>
